@@ -1,0 +1,21 @@
+db_file: "bot.db"
+
+bot_url: "https://t.me/getpocket_client_bot"
+
+API_ID: "51483088"
+
+messages:
+  response:
+    start: "Привет! Чтобы начать пользоваться данным ботом, необходимо пройти процедуру авторизации. Для этого переходи по ссылке:\n%s"
+    redirectURL: "http://localhost:8080/callback"
+    already_authorized: "Ты уже авторизовался с помощью своего Pocket аккаунта. Присылай ссылку чтобы сохранить."
+    unknown_command: "Я не знаю такой команды :("
+    link_saved: "Ссылка успешно сохранена!"
+  error:
+    default: "Произошла неизвестная ошибка."
+    invalid_url:  "Это невалидная ссылка."
+    unable_to_save: "Не удалось сохранить ссылку в Pocket. Попробуйте пожалуйста позже."
+  vk_api:
+      app_id: "51483088"
+      scope: "message"
+      version: "5.131"
