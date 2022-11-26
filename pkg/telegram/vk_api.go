@@ -3,7 +3,7 @@ package telegram
 import "fmt"
 
 const (
-	authorizeURL = "https://oauth.vk.com/authorize?client_id=%d&display=page&redirect_uri=%s&scope=%s&response_type=code&v=%s"
+	authorizeURL = "https://oauth.vk.com/authorize?client_id=%d&display=page&redirect_uri=%s&scope=%s&response_type=token&v=%s"
 )
 
 // формирование ссылки для прохождения Oauth

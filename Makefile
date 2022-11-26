@@ -10,4 +10,4 @@ build-image:
 	docker build -t telegram-bot/vk .
 
 start-container:
-	docker run --env-file .env -p 80:80 telegram-bot/vk
+	docker run --env-file .env -p 8080:8080 telegram-bot/vk

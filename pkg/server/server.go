@@ -28,8 +28,8 @@ func NewAuthServer(redirectUrl string, storage storage.TokenStorage) *AuthServer
 
 func (s *AuthServer) Start() error {
 	s.server = &http.Server{
-		Handler: s,
-		Addr:    ":80",
+		Handler: s.InitRouter(),
+		Addr:    ":8080",
 	}
 
 	logger, _ := zap.NewDevelopment(zap.Fields(
@@ -41,7 +41,15 @@ func (s *AuthServer) Start() error {
 	return s.server.ListenAndServe()
 }
 
-func (s *AuthServer) ServeHTTP(w http.ResponseWriter, r *http.Request) {
+func (s *AuthServer) InitRouter() *http.ServeMux {
+	router := http.NewServeMux()
+
+	// получение токена от VK API
+	router.HandleFunc("/callback", s.getAccessToken)
+	return router
+}
+
+func (s *AuthServer) getAccessToken(w http.ResponseWriter, r *http.Request) {
 	if r.Method != http.MethodGet {
 		s.logger.Debug("received unavailable HTTP method request",
 			zap.String("method", r.Method))
